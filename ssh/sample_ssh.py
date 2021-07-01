@@ -15,9 +15,9 @@ from ssh2.session import Session
 # HOST = '192.168.29.200' #ip of raspberry pi of instructor
 HOST = 'localhost'
 PORT = 22
-USER = 'test_user'    # instructor set user name in the ubuntu 20.04 installed in raspberry pi
+USER = 'hero'    # instructor set user name in the ubuntu 20.04 installed in raspberry pi
 #USER = os.getlogin()
-PASSWORD = 'Test321'
+PASSWORD = '2110'
 
 # class defination of ssh channel creation
 class Ssh_session():
@@ -30,7 +30,6 @@ class Ssh_session():
     def __init__(self, host, user, port, password):
         """
         [summary: constructor]
-
         Args:
             host ([type]): [description]
             user ([type]): [description]
@@ -50,7 +49,7 @@ class Ssh_session():
         [summary:]
         """
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect(self._host, self._port)
+        sock.connect((self._host, self._port))
 
         self.session = Session()
         self.session.handshake(sock)
@@ -60,7 +59,6 @@ class Ssh_session():
 
     def execute_cmd(self, cmd):
         """[summary: executes remote command]
-
         Args:
             cmd ([type]): [description]
         """
@@ -72,7 +70,7 @@ class Ssh_session():
         data_list.append(d)
 
         while s > 0:
-            s, d = channel.read()
+            s, d = self.channel.read()
             size += s
             data_list.append(d)
         return size, data_list
@@ -82,8 +80,9 @@ class Ssh_session():
         """
         [summary: Destroctor]
         """
-        # self.channel.close()
-        print("Exit Status: %s" % self.channel.get_exit_ststus())
+        #self.channel.close()
+        #print("Exit Status: %s" % self.channel.get_exit_status())
+        pass
     # End of destroctor
 # End of Class
 
@@ -95,4 +94,5 @@ if __name__ == "__main__":
     size, data = ssh_ses_obj.execute_cmd(cmd)
     ssh_ses_obj.channel.close()
     print("Received Size: {} and Data: {}".format(size, data))
+    print("Exit Status: %s" % ssh_ses_obj.channel.get_exit_status())
     sys.exit(0)

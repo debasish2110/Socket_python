@@ -6,6 +6,8 @@ This repo contains the practice codes and assignment codes of socket programming
 
 Library used: [socket](https://docs.python.org/3/library/socket.html), [os](https://docs.python.org/3/library/os.path.html), [sys](https://docs.python.org/3/library/sys.html), [ssh2](https://pypi.org/project/ssh2-python/)
 
+* **To RUN the SSH server follow [this link](https://www.cyberciti.biz/faq/ubuntu-linux-install-openssh-server/)**
+
 ## Tutorials Videos and vlogs:
 
 

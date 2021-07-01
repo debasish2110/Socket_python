@@ -15,9 +15,9 @@ from ssh2.session import Session
 # HOST = '192.168.29.200' #ip of raspberry pi of instructor
 HOST = 'localhost'
 PORT = 22
-USER = 'hero'    # instructor set user name in the ubuntu 20.04 installed in raspberry pi
+USER = 'enter your user name'    # instructor set user name in the ubuntu 20.04 installed in raspberry pi
 #USER = os.getlogin()
-PASSWORD = '2110'
+PASSWORD = 'enter own password'
 
 # class defination of ssh channel creation
 class Ssh_session():

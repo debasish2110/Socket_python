@@ -4,14 +4,15 @@ import socket
 from ssh2.session import Session
 
 host = 'localhost'
-user = os.getlogin()
+user = 'enter ur user name'
+password = 'enter ur password'
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((host, 22))
 
 session = Session()
 session.handshake(sock)
-session.agent_auth(user)
+session.userauth_password(user, password)
 
 channel = session.open_session()
 channel.execute('echo me; exit 2')
